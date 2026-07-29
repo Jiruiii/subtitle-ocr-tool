@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.env
+
+# Generated OCR results and downloaded media.
+outputs/
+output/
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.avi
+*.m4v
+youtube_cookies.txt
