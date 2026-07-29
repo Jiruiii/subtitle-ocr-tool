@@ -1,0 +1,5 @@
+# Install a matching PaddlePaddle CPU/CUDA package first:
+# https://www.paddlepaddle.org.cn/install/quick
+paddleocr[all]>=3.0,<4
+opencv-python>=4.8
+yt-dlp>=2024.1
