@@ -1,5 +1,7 @@
-# Install a matching PaddlePaddle CPU/CUDA package first:
-# https://www.paddlepaddle.org.cn/install/quick
+# Recommended: python install.py
+# This file is for manual installation. Install a matching PaddlePaddle
+# CPU/CUDA package before installing these dependencies.
+# https://www.paddlepaddle.org.cn/documentation/docs/en/install/pip/linux-pip_en.html
 paddleocr[all]>=3.0,<4
 opencv-python>=4.8
 yt-dlp>=2024.1

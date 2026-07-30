@@ -10,37 +10,46 @@
 
 ## 安裝
 
-需要：
+需要 Python 3.10 以上與 ffmpeg。安裝腳本會自動建立 `.venv`，偵測是否有
+NVIDIA GPU，並安裝對應的 PaddlePaddle、PaddleOCR、OpenCV 與 yt-dlp。
 
-- Python 3.10 以上
-- ffmpeg
-- 符合目前 CPU/CUDA 環境的 PaddlePaddle
-- PaddleOCR、OpenCV、yt-dlp
-
-先安裝 PaddlePaddle。請依照官方頁面選擇 CPU 或 CUDA 版本：
-
-<https://www.paddlepaddle.org.cn/install/quick>
-
-接著安裝本工具與 OCR 依賴：
+先下載專案並執行安裝腳本：
 
 ~~~bash
 git clone https://github.com/Jiruiii/subtitle-ocr-tool.git
 cd subtitle-ocr-tool
-
-python -m venv .venv
-# Linux/macOS
-source .venv/bin/activate
-# Windows PowerShell:
-# .venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install -e ".[ocr]"
+python install.py
 ~~~
 
-如果只要執行不需要 OCR 模型的 SRT/WAV 工具，可以先安裝核心依賴：
+沒有 NVIDIA GPU 時，腳本會安裝 CPU 版；偵測到 NVIDIA GPU 時，會依
+`nvidia-smi` 顯示的 CUDA 版本選擇官方可用的 GPU 套件。需要手動指定時：
 
 ~~~bash
-python -m pip install -e .
+python install.py --cpu
+python install.py --gpu
+python install.py --gpu --cuda 11.8
+~~~
+
+如果不想建立 `.venv`，才使用 `--no-venv`：
+
+~~~bash
+python install.py --no-venv
+~~~
+
+安裝腳本仍然使用 PaddlePaddle 官方套件來源；一般使用者不需要自行開啟
+中國網站或手動下載 wheel。若自動安裝失敗，再參考[官方安裝文件](https://www.paddlepaddle.org.cn/documentation/docs/en/install/pip/linux-pip_en.html)
+選擇適合自己環境的版本。
+
+安裝完成後，啟用虛擬環境：
+
+~~~bash
+# Linux/macOS
+source .venv/bin/activate
+~~~
+
+~~~powershell
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
 ~~~
 
 ## 最快用法
